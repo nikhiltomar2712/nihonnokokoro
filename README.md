@@ -1,5 +1,3 @@
-Here’s a clean **README.md** with all image links removed—perfect for immediate use without placeholder screenshots.
-
 ```markdown
 # 日本の心 — Nihon no Kokoro 🌸
 
