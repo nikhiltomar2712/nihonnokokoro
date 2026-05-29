@@ -1,0 +1,2306 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="tokyo-night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nihon no Kokoro - A Deep Dive into Japanese Culture. Discover the beauty, tradition, and soul of Japan.">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>日本の心 - Nihon no Kokoro | Japanese Culture</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js">
+    </script>
+
+    <style>
+        :root {
+            /* Tokyo Night (default) */
+            --bg-primary: #0d0d1a;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --bg-card: rgba(26, 26, 46, 0.75);
+            --bg-glass: rgba(22, 33, 62, 0.6);
+            --text-primary: #e8e8f0;
+            --text-secondary: #b0b0c8;
+            --text-accent: #7b8cff;
+            --accent: #6c7dff;
+            --accent-2: #ff6b9d;
+            --accent-3: #4ecdc4;
+            --gold: #d4a574;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 60px rgba(108, 125, 255, 0.3);
+            --gradient-hero: linear-gradient(180deg, #0d0d1a 0%, #1a1a2e 30%, #16213e 60%, #0d0d1a 100%);
+            --gradient-card: linear-gradient(135deg, rgba(108, 125, 255, 0.1), rgba(255, 107, 157, 0.08));
+            --sakura-color: #ffb7c5;
+            --lantern-glow: #ff6b3d;
+            --nav-bg: rgba(13, 13, 26, 0.85);
+            --card-hover-border: rgba(108, 125, 255, 0.5);
+            --badge-bg: rgba(108, 125, 255, 0.2);
+        }
+
+        [data-theme="hacker-green"] {
+            --bg-primary: #0a0f0a;
+            --bg-secondary: #0d1a0d;
+            --bg-tertiary: #0f220f;
+            --bg-card: rgba(13, 26, 13, 0.8);
+            --bg-glass: rgba(15, 34, 15, 0.65);
+            --text-primary: #c8ffc8;
+            --text-secondary: #7aaa7a;
+            --text-accent: #00ff41;
+            --accent: #00ff41;
+            --accent-2: #00cc88;
+            --accent-3: #33ff77;
+            --gold: #aaffaa;
+            --border: rgba(0, 255, 65, 0.12);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 60px rgba(0, 255, 65, 0.25);
+            --gradient-hero: linear-gradient(180deg, #0a0f0a 0%, #0d1a0d 30%, #0f220f 60%, #0a0f0a 100%);
+            --gradient-card: linear-gradient(135deg, rgba(0, 255, 65, 0.08), rgba(0, 204, 136, 0.06));
+            --sakura-color: #88ff88;
+            --lantern-glow: #00ff41;
+            --nav-bg: rgba(10, 15, 10, 0.9);
+            --card-hover-border: rgba(0, 255, 65, 0.5);
+            --badge-bg: rgba(0, 255, 65, 0.15);
+        }
+
+        [data-theme="magenta-bloom"] {
+            --bg-primary: #1a0a1a;
+            --bg-secondary: #2a1030;
+            --bg-tertiary: #351840;
+            --bg-card: rgba(42, 16, 48, 0.78);
+            --bg-glass: rgba(53, 24, 64, 0.6);
+            --text-primary: #f5e0f5;
+            --text-secondary: #c8a0c8;
+            --text-accent: #ff6bcd;
+            --accent: #ff4db8;
+            --accent-2: #ff8cde;
+            --accent-3: #e040c0;
+            --gold: #ffb8e8;
+            --border: rgba(255, 107, 205, 0.1);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+            --shadow-glow: 0 0 60px rgba(255, 77, 184, 0.3);
+            --gradient-hero: linear-gradient(180deg, #1a0a1a 0%, #2a1030 30%, #351840 60%, #1a0a1a 100%);
+            --gradient-card: linear-gradient(135deg, rgba(255, 77, 184, 0.1), rgba(224, 64, 192, 0.07));
+            --sakura-color: #ffb8e0;
+            --lantern-glow: #ff4db8;
+            --nav-bg: rgba(26, 10, 26, 0.88);
+            --card-hover-border: rgba(255, 77, 184, 0.5);
+            --badge-bg: rgba(255, 77, 184, 0.18);
+        }
+
+        [data-theme="lavender-zen"] {
+            --bg-primary: #f8f4ff;
+            --bg-secondary: #f0e8ff;
+            --bg-tertiary: #e8dcf8;
+            --bg-card: rgba(255, 255, 255, 0.75);
+            --bg-glass: rgba(240, 232, 255, 0.55);
+            --text-primary: #2d1b4e;
+            --text-secondary: #5a4a78;
+            --text-accent: #7c4dff;
+            --accent: #6d3fff;
+            --accent-2: #b388ff;
+            --accent-3: #9c6dff;
+            --gold: #c9a84c;
+            --border: rgba(109, 63, 255, 0.1);
+            --shadow: 0 8px 32px rgba(109, 63, 255, 0.12);
+            --shadow-glow: 0 0 60px rgba(109, 63, 255, 0.18);
+            --gradient-hero: linear-gradient(180deg, #f8f4ff 0%, #f0e8ff 30%, #e8dcf8 60%, #f8f4ff 100%);
+            --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 232, 255, 0.7));
+            --sakura-color: #e8c8f0;
+            --lantern-glow: #b388ff;
+            --nav-bg: rgba(248, 244, 255, 0.88);
+            --card-hover-border: rgba(109, 63, 255, 0.4);
+            --badge-bg: rgba(109, 63, 255, 0.1);
+        }
+
+        [data-theme="cherry-blossom-red"] {
+            --bg-primary: #1a0a0a;
+            --bg-secondary: #2a1015;
+            --bg-tertiary: #351820;
+            --bg-card: rgba(42, 16, 21, 0.78);
+            --bg-glass: rgba(53, 24, 32, 0.6);
+            --text-primary: #ffe8e8;
+            --text-secondary: #d4a0a0;
+            --text-accent: #ff5555;
+            --accent: #ff3d3d;
+            --accent-2: #ff6b6b;
+            --accent-3: #e03030;
+            --gold: #ffb8b8;
+            --border: rgba(255, 61, 61, 0.1);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 60px rgba(255, 61, 61, 0.3);
+            --gradient-hero: linear-gradient(180deg, #1a0a0a 0%, #2a1015 30%, #351820 60%, #1a0a0a 100%);
+            --gradient-card: linear-gradient(135deg, rgba(255, 61, 61, 0.1), rgba(224, 48, 48, 0.07));
+            --sakura-color: #ffb8c0;
+            --lantern-glow: #ff3d3d;
+            --nav-bg: rgba(26, 10, 10, 0.88);
+            --card-hover-border: rgba(255, 61, 61, 0.5);
+            --badge-bg: rgba(255, 61, 61, 0.18);
+        }
+
+        [data-theme="deep-ocean-blue"] {
+            --bg-primary: #050d1a;
+            --bg-secondary: #0a1a30;
+            --bg-tertiary: #0d2240;
+            --bg-card: rgba(10, 26, 48, 0.78);
+            --bg-glass: rgba(13, 34, 64, 0.6);
+            --text-primary: #d8e8ff;
+            --text-secondary: #8ab0d8;
+            --text-accent: #4da6ff;
+            --accent: #3d96ff;
+            --accent-2: #00b8d4;
+            --accent-3: #5ec8f0;
+            --gold: #b8d4e8;
+            --border: rgba(61, 150, 255, 0.1);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 60px rgba(61, 150, 255, 0.3);
+            --gradient-hero: linear-gradient(180deg, #050d1a 0%, #0a1a30 30%, #0d2240 60%, #050d1a 100%);
+            --gradient-card: linear-gradient(135deg, rgba(61, 150, 255, 0.1), rgba(0, 184, 212, 0.07));
+            --sakura-color: #a8d8f0;
+            --lantern-glow: #4da6ff;
+            --nav-bg: rgba(5, 13, 26, 0.88);
+            --card-hover-border: rgba(61, 150, 255, 0.5);
+            --badge-bg: rgba(61, 150, 255, 0.18);
+        }
+
+        [data-theme="soft-sakura-pink"] {
+            --bg-primary: #fff5f7;
+            --bg-secondary: #ffe8ec;
+            --bg-tertiary: #ffd8e0;
+            --bg-card: rgba(255, 255, 255, 0.75);
+            --bg-glass: rgba(255, 232, 236, 0.55);
+            --text-primary: #4a2030;
+            --text-secondary: #7a5060;
+            --text-accent: #ff7093;
+            --accent: #ff5c85;
+            --accent-2: #ff8fa8;
+            --accent-3: #e85078;
+            --gold: #d4a060;
+            --border: rgba(255, 92, 133, 0.1);
+            --shadow: 0 8px 32px rgba(255, 92, 133, 0.1);
+            --shadow-glow: 0 0 60px rgba(255, 92, 133, 0.15);
+            --gradient-hero: linear-gradient(180deg, #fff5f7 0%, #ffe8ec 30%, #ffd8e0 60%, #fff5f7 100%);
+            --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 232, 236, 0.7));
+            --sakura-color: #ffc8d8;
+            --lantern-glow: #ff7093;
+            --nav-bg: rgba(255, 245, 247, 0.88);
+            --card-hover-border: rgba(255, 92, 133, 0.4);
+            --badge-bg: rgba(255, 92, 133, 0.1);
+        }
+
+        /* Global Reset & Base */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background 0.5s ease, color 0.5s ease;
+            position: relative;
+        }
+
+        /* Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+            z-index: 10000;
+            transition: width 0.1s linear;
+            border-radius: 0 3px 3px 0;
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        /* Sakura Canvas */
+        #sakura-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s ease;
+            padding: 0.6rem 2rem;
+        }
+        .navbar.scrolled {
+            box-shadow: var(--shadow);
+            padding: 0.4rem 2rem;
+        }
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .nav-logo {
+            font-family: 'Shippori Mincho', 'Noto Sans JP', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+        .nav-logo:hover {
+            color: var(--accent);
+        }
+        .nav-logo .logo-icon {
+            font-size: 1.8rem;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.3rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+            background: var(--badge-bg);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 10001;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 2.5px;
+            background: var(--text-primary);
+            border-radius: 3px;
+            transition: all 0.35s ease;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Theme Switcher */
+        .theme-switcher-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .theme-toggle-btn {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 0.8rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            white-space: nowrap;
+        }
+        .theme-toggle-btn:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-2);
+        }
+        .theme-panel {
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: var(--bg-card);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1rem;
+            display: none;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            z-index: 10002;
+            box-shadow: var(--shadow);
+            min-width: 280px;
+        }
+        .theme-panel.show {
+            display: grid;
+        }
+        .theme-orb {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .theme-orb:hover {
+            transform: scale(1.2);
+            border-color: #fff;
+            box-shadow: 0 0 25px currentColor;
+        }
+        .theme-orb.active {
+            border-color: #fff;
+            box-shadow: 0 0 30px currentColor;
+            animation: orbPulse 2s infinite;
+        }
+        @keyframes orbPulse {
+            0%,
+            100% {
+                box-shadow: 0 0 20px currentColor;
+            }
+            50% {
+                box-shadow: 0 0 40px currentColor, 0 0 60px currentColor;
+            }
+        }
+        .orb-tokyo {
+            background: linear-gradient(135deg, #1a1a2e, #6c7dff);
+            color: #6c7dff;
+        }
+        .orb-hacker {
+            background: linear-gradient(135deg, #0d1a0d, #00ff41);
+            color: #00ff41;
+        }
+        .orb-magenta {
+            background: linear-gradient(135deg, #2a1030, #ff4db8);
+            color: #ff4db8;
+        }
+        .orb-lavender {
+            background: linear-gradient(135deg, #e8dcf8, #7c4dff);
+            color: #7c4dff;
+        }
+        .orb-cherry {
+            background: linear-gradient(135deg, #2a1015, #ff3d3d);
+            color: #ff3d3d;
+        }
+        .orb-ocean {
+            background: linear-gradient(135deg, #0a1a30, #4da6ff);
+            color: #4da6ff;
+        }
+        .orb-sakura {
+            background: linear-gradient(135deg, #ffe8ec, #ff7093);
+            color: #ff7093;
+        }
+
+        /* Section Base */
+        .section {
+            position: relative;
+            z-index: 2;
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        .section-header h2 {
+            font-family: 'Shippori Mincho', 'Playfair Display', serif;
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-header .jp-subtitle {
+            font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.08em;
+        }
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 1rem auto;
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 3;
+            padding-top: 80px;
+            background: var(--gradient-hero);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 4;
+            max-width: 900px;
+            padding: 2rem;
+        }
+        .hero-content h1 {
+            font-family: 'Shippori Mincho', 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        .hero-content h1 .jp-big {
+            display: block;
+            font-size: clamp(1.6rem, 4vw, 2.8rem);
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.04em;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            transition: all 0.35s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 3D Floating Elements */
+        .floating-3d {
+            position: absolute;
+            pointer-events: none;
+            z-index: 2;
+            font-size: 3rem;
+            animation: float3D 6s ease-in-out infinite;
+            opacity: 0.7;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+        }
+        .floating-3d:nth-child(1) {
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+            font-size: 4rem;
+        }
+        .floating-3d:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 1.5s;
+            font-size: 3.5rem;
+        }
+        .floating-3d:nth-child(3) {
+            bottom: 25%;
+            left: 12%;
+            animation-delay: 3s;
+            font-size: 3rem;
+        }
+        .floating-3d:nth-child(4) {
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 4.5s;
+            font-size: 4.5rem;
+        }
+        .floating-3d:nth-child(5) {
+            top: 50%;
+            left: 5%;
+            animation-delay: 2s;
+            font-size: 2.5rem;
+        }
+        @keyframes float3D {
+            0%,
+            100% {
+                transform: translateY(0) rotateY(0deg) rotateX(0deg);
+            }
+            25% {
+                transform: translateY(-25px) rotateY(10deg) rotateX(5deg);
+            }
+            50% {
+                transform: translateY(-10px) rotateY(-8deg) rotateX(-3deg);
+            }
+            75% {
+                transform: translateY(-30px) rotateY(5deg) rotateX(8deg);
+            }
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .card:hover {
+            transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+            border-color: var(--card-hover-border);
+            box-shadow: var(--shadow-glow);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-card);
+            opacity: 0;
+            transition: opacity 0.4s;
+            border-radius: 20px;
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+        .card h3 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.6rem;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.03em;
+        }
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+        .card .jp-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            letter-spacing: 0.06em;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Cuisine Gallery */
+        .cuisine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .cuisine-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--border);
+        }
+        .cuisine-card:hover {
+            transform: rotateY(8deg) rotateX(-5deg) scale(1.03);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-glow);
+        }
+        .cuisine-card .cuisine-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+        .cuisine-card:hover .cuisine-img {
+            transform: scale(1.1);
+        }
+        .cuisine-card .cuisine-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+            color: #fff;
+            z-index: 2;
+        }
+        .cuisine-card .cuisine-overlay h4 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.04em;
+        }
+        .cuisine-card .cuisine-overlay span {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* Gallery Masonry */
+        .masonry-grid {
+            columns: 3;
+            column-gap: 1.5rem;
+        }
+        .masonry-grid .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.4s, box-shadow 0.4s;
+            border: 2px solid var(--border);
+        }
+        .masonry-grid .masonry-item:hover {
+            transform: scale(1.03);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-glow);
+        }
+        .masonry-grid img {
+            width: 100%;
+            display: block;
+            border-radius: 16px;
+        }
+
+        /* Discord Section */
+        .discord-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--border);
+            border-radius: 28px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .discord-card:hover {
+            border-color: #5865F2;
+            box-shadow: 0 0 60px rgba(88, 101, 242, 0.4);
+        }
+        .discord-icon-glow {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 1rem;
+            animation: discordPulse 2.5s infinite;
+        }
+        @keyframes discordPulse {
+            0%,
+            100% {
+                filter: drop-shadow(0 0 15px #5865F2);
+            }
+            50% {
+                filter: drop-shadow(0 0 40px #5865F2) drop-shadow(0 0 60px #5865F2);
+            }
+        }
+        .discord-card h3 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        .discord-card .member-count {
+            font-size: 1.2rem;
+            color: var(--accent-3);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.04em;
+        }
+        .discord-benefits {
+            list-style: none;
+            text-align: left;
+            display: inline-block;
+            margin: 1.5rem 0;
+        }
+        .discord-benefits li {
+            padding: 0.4rem 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .discord-benefits li::before {
+            content: '✓ ';
+            color: #5865F2;
+            font-weight: 700;
+        }
+        .btn-discord {
+            background: #5865F2;
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.35s;
+            letter-spacing: 0.03em;
+            box-shadow: 0 8px 30px rgba(88, 101, 242, 0.35);
+        }
+        .btn-discord:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 45px rgba(88, 101, 242, 0.55);
+        }
+
+        /* Quiz */
+        .quiz-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-align: center;
+        }
+        .quiz-question {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.03em;
+        }
+        .quiz-options {
+            display: grid;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .quiz-option {
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            background: var(--bg-glass);
+            color: var(--text-primary);
+            text-align: left;
+        }
+        .quiz-option:hover {
+            border-color: var(--accent);
+            background: var(--badge-bg);
+        }
+        .quiz-option.correct {
+            border-color: #4caf50;
+            background: rgba(76, 175, 80, 0.2);
+        }
+        .quiz-option.wrong {
+            border-color: #f44336;
+            background: rgba(244, 67, 54, 0.2);
+        }
+        .quiz-result {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* Search Bar */
+        .search-wrap {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+        .search-input {
+            flex: 1;
+            padding: 0.85rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid var(--border);
+            background: var(--bg-glass);
+            color: var(--text-primary);
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 25px var(--accent);
+        }
+        .search-results {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+            display: none;
+        }
+        .search-results.show {
+            display: block;
+        }
+        .search-result-item {
+            padding: 0.7rem 1rem;
+            background: var(--bg-glass);
+            border-radius: 10px;
+            margin: 0.3rem 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+        }
+        .search-result-item:hover {
+            border-color: var(--accent);
+            background: var(--badge-bg);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 20000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .lightbox.show {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9998;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            box-shadow: var(--shadow);
+            transition: all 0.35s;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        .footer-social {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        .footer-social a {
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+        .footer-social a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        .footer-copy {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            letter-spacing: 0.03em;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+            margin-left: 0.5rem;
+        }
+        .lang-btn {
+            padding: 0.35rem 0.7rem;
+            border-radius: 20px;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+            transition: all 0.3s;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+        .lang-btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+        .lang-btn:hover {
+            border-color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .masonry-grid {
+                columns: 2;
+            }
+            .nav-links {
+                gap: 0.1rem;
+            }
+            .nav-links a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.8rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 0.5rem;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: var(--shadow);
+                z-index: 10000;
+                overflow-y: auto;
+            }
+            .nav-links.show {
+                right: 0;
+            }
+            .nav-links a {
+                display: block;
+                padding: 0.7rem 1rem;
+                font-size: 1rem;
+                border-radius: 10px;
+            }
+            .masonry-grid {
+                columns: 1;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .cuisine-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+            .section {
+                padding: 3rem 1rem;
+            }
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .theme-panel {
+                grid-template-columns: repeat(4, 1fr);
+                right: -50px;
+                min-width: 250px;
+            }
+            .lang-switcher {
+                margin-left: 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .floating-3d {
+                font-size: 2rem !important;
+            }
+            .theme-panel {
+                grid-template-columns: repeat(3, 1fr);
+                right: -80px;
+                min-width: 200px;
+            }
+            .theme-orb {
+                width: 32px;
+                height: 32px;
+            }
+            .btn {
+                padding: 0.7rem 1.4rem;
+                font-size: 0.9rem;
+            }
+            .discord-card {
+                padding: 2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Sakura Canvas -->
+    <canvas id="sakura-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-icon">⛩️</span> 日本の心
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" data-i18n="nav-home">Home</a></li>
+                <li><a href="#culture" data-i18n="nav-culture">Culture</a></li>
+                <li><a href="#traditions" data-i18n="nav-traditions">Traditions</a></li>
+                <li><a href="#cuisine" data-i18n="nav-cuisine">Cuisine</a></li>
+                <li><a href="#arts" data-i18n="nav-arts">Arts</a></li>
+                <li><a href="#language" data-i18n="nav-language">Language</a></li>
+                <li><a href="#modern" data-i18n="nav-modern">Modern Japan</a></li>
+                <li><a href="#travel" data-i18n="nav-travel">Travel</a></li>
+                <li><a href="#gallery" data-i18n="nav-gallery">Gallery</a></li>
+                <li><a href="#community" data-i18n="nav-community">Community</a></li>
+            </ul>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="romaji">ローマ字</button>
+                <button class="lang-btn" data-lang="jp">日本語</button>
+            </div>
+            <div class="theme-switcher-wrap">
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch theme">🎨 <span>Theme</span></button>
+                <div class="theme-panel" id="themePanel">
+                    <div class="theme-orb orb-tokyo active" data-theme="tokyo-night" title="Tokyo Night"></div>
+                    <div class="theme-orb orb-hacker" data-theme="hacker-green" title="Hacker Green"></div>
+                    <div class="theme-orb orb-magenta" data-theme="magenta-bloom" title="Magenta Bloom"></div>
+                    <div class="theme-orb orb-lavender" data-theme="lavender-zen" title="Lavender Zen"></div>
+                    <div class="theme-orb orb-cherry" data-theme="cherry-blossom-red" title="Cherry Blossom Red"></div>
+                    <div class="theme-orb orb-ocean" data-theme="deep-ocean-blue" title="Deep Ocean Blue"></div>
+                    <div class="theme-orb orb-sakura" data-theme="soft-sakura-pink" title="Soft Sakura Pink"></div>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="section" id="hero">
+        <div class="floating-3d" style="top:12%;left:6%;">⛩️</div>
+        <div class="floating-3d" style="top:18%;right:8%;">🏯</div>
+        <div class="floating-3d" style="bottom:22%;left:10%;">🎌</div>
+        <div class="floating-3d" style="bottom:18%;right:12%;">🍵</div>
+        <div class="floating-3d" style="top:45%;left:4%;">🎋</div>
+        <div class="floating-3d" style="top:50%;right:5%;">🐉</div>
+        <div class="hero-content">
+            <h1>
+                <span class="jp-big">日本の心</span>
+                Nihon no Kokoro
+            </h1>
+            <p class="hero-subtitle" data-i18n="hero-subtitle">Discover the Beauty, Tradition, and Soul of Japan</p>
+            <div class="hero-cta">
+                <a href="#culture" class="btn btn-primary" data-i18n="hero-explore">Explore Culture</a>
+                <a href="#quiz-section" class="btn btn-outline" data-i18n="hero-quiz">Take the Quiz 🧠</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="section" style="padding-top:2rem;padding-bottom:2rem;">
+        <div class="search-wrap">
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search cultural topics... (e.g., tea ceremony, samurai, anime)" data-i18n="search-placeholder">
+            <button class="btn btn-primary" id="searchBtn" style="padding:0.85rem 1.5rem;">Search</button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+    </section>
+
+    <!-- Cultural Essence -->
+    <section class="section" id="culture">
+        <div class="section-header">
+            <h2 data-i18n="culture-title">Cultural Essence</h2>
+            <p class="jp-subtitle">文化の真髄 · Bunka no Shinzui</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="cards-grid">
+            <div class="card" data-tilt>
+                <span class="card-icon">🎎</span>
+                <h3 data-i18n="culture-wabisabi">Wabi-Sabi</h3>
+                <p data-i18n="culture-wabisabi-desc">The art of finding beauty in imperfection and transience. A cornerstone of Japanese aesthetics celebrating asymmetry and simplicity.</p>
+                <span class="jp-label">侘び寂び</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🎌</span>
+                <h3 data-i18n="culture-omotenashi">Omotenashi</h3>
+                <p data-i18n="culture-omotenashi-desc">Japanese hospitality rooted in selfless service. Anticipating needs without expectation of reward.</p>
+                <span class="jp-label">おもてなし</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🌸</span>
+                <h3 data-i18n="culture-monoaware">Mono no Aware</h3>
+                <p data-i18n="culture-monoaware-desc">The bittersweet awareness of impermanence. The gentle sadness at the passing of beautiful things.</p>
+                <span class="jp-label">物の哀れ</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🎋</span>
+                <h3 data-i18n="culture-shinto">Shinto & Buddhism</h3>
+                <p data-i18n="culture-shinto-desc">Japan's two major spiritual traditions coexist harmoniously, shaping rituals, festivals, and daily life.</p>
+                <span class="jp-label">神道と仏教</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🏯</span>
+                <h3 data-i18n="culture-respect">Respect & Harmony</h3>
+                <p data-i18n="culture-respect-desc">Wa (harmony) is central to Japanese society. Bowing, honorific language, and group consciousness define interactions.</p>
+                <span class="jp-label">和 · Wa</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🗾</span>
+                <h3 data-i18n="culture-nature">Nature Reverence</h3>
+                <p data-i18n="culture-nature-desc">Deep connection with nature through seasonal celebrations, garden design, and the appreciation of natural beauty.</p>
+                <span class="jp-label">自然崇拝</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Traditions & Festivals -->
+    <section class="section" id="traditions">
+        <div class="section-header">
+            <h2 data-i18n="traditions-title">Traditions & Festivals</h2>
+            <p class="jp-subtitle">伝統と祭り · Dentō to Matsuri</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="cards-grid">
+            <div class="card" data-tilt>
+                <span class="card-icon">🎆</span>
+                <h3>Matsuri</h3>
+                <p>Vibrant local festivals featuring mikoshi portable shrines, taiko drumming, street food, and spectacular fireworks displays throughout the year.</p>
+                <span class="jp-label">祭り</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🍵</span>
+                <h3>Tea Ceremony</h3>
+                <p>Chanoyu - the meditative ritual of preparing and serving matcha green tea. Every movement is choreographed with profound meaning.</p>
+                <span class="jp-label">茶の湯</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🌸</span>
+                <h3>Hanami</h3>
+                <p>Cherry blossom viewing parties unite friends and families under sakura trees. A celebration of spring's fleeting beauty with food and sake.</p>
+                <span class="jp-label">花見</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🎍</span>
+                <h3>Shōgatsu</h3>
+                <p>Japanese New Year is the most important holiday. Families gather for osechi ryōri, hatsumōde shrine visits, and nengajō greeting cards.</p>
+                <span class="jp-label">正月</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🎋</span>
+                <h3>Tanabata</h3>
+                <p>The Star Festival celebrates the meeting of deities Orihime and Hikoboshi. Colorful tanzaku wishes adorn bamboo branches.</p>
+                <span class="jp-label">七夕</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🪷</span>
+                <h3>Obon</h3>
+                <p>Buddhist festival honoring ancestral spirits. Families visit graves, light lanterns, and perform Bon Odori dances to welcome spirits home.</p>
+                <span class="jp-label">お盆</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Japanese Cuisine -->
+    <section class="section" id="cuisine">
+        <div class="section-header">
+            <h2 data-i18n="cuisine-title">Japanese Cuisine</h2>
+            <p class="jp-subtitle">和食 · Washoku</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="cuisine-grid">
+            <div class="cuisine-card" data-tilt>
+                <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&h=600&fit=crop&auto=format" alt="Sushi" class="cuisine-img" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22><rect fill=%22%231a1a2e%22 width=%22600%22 height=%22600%22/><text fill=%22%23b0b0c8%22 x=%22300%22 y=%22310%22 text-anchor=%22middle%22 font-size=%2224%22>🍣 Sushi</text></svg>'">
+                <div class="cuisine-overlay"><h4>Sushi</h4><span>寿司</span></div>
+            </div>
+            <div class="cuisine-card" data-tilt>
+                <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&h=600&fit=crop&auto=format" alt="Ramen" class="cuisine-img" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22><rect fill=%22%231a1a2e%22 width=%22600%22 height=%22600%22/><text fill=%22%23b0b0c8%22 x=%22300%22 y=%22310%22 text-anchor=%22middle%22 font-size=%2224%22>🍜 Ramen</text></svg>'">
+                <div class="cuisine-overlay"><h4>Ramen</h4><span>ラーメン</span></div>
+            </div>
+            <div class="cuisine-card" data-tilt>
+                <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=600&h=600&fit=crop&auto=format" alt="Tempura" class="cuisine-img" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22><rect fill=%22%231a1a2e%22 width=%22600%22 height=%22600%22/><text fill=%22%23b0b0c8%22 x=%22300%22 y=%22310%22 text-anchor=%22middle%22 font-size=%2224%22>🍤 Tempura</text></svg>'">
+                <div class="cuisine-overlay"><h4>Tempura</h4><span>天ぷら</span></div>
+            </div>
+            <div class="cuisine-card" data-tilt>
+                <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&h=600&fit=crop&auto=format" alt="Matcha" class="cuisine-img" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22><rect fill=%22%231a1a2e%22 width=%22600%22 height=%22600%22/><text fill=%22%23b0b0c8%22 x=%22300%22 y=%22310%22 text-anchor=%22middle%22 font-size=%2224%22>🍵 Matcha</text></svg>'">
+                <div class="cuisine-overlay"><h4>Matcha</h4><span>抹茶</span></div>
+            </div>
+            <div class="cuisine-card" data-tilt>
+                <img src="https://images.unsplash.com/photo-1540648639573-8c848de23f0a?w=600&h=600&fit=crop&auto=format" alt="Wagashi" class="cuisine-img" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22><rect fill=%22%231a1a2e%22 width=%22600%22 height=%22600%22/><text fill=%22%23b0b0c8%22 x=%22300%22 y=%22310%22 text-anchor=%22middle%22 font-size=%2224%22>🍡 Wagashi</text></svg>'">
+                <div class="cuisine-overlay"><h4>Wagashi</h4><span>和菓子</span></div>
+            </div>
+            <div class="cuisine-card" data-tilt>
+                <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=600&h=600&fit=crop&auto=format" alt="Bento" class="cuisine-img" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22><rect fill=%22%231a1a2e%22 width=%22600%22 height=%22600%22/><text fill=%22%23b0b0c8%22 x=%22300%22 y=%22310%22 text-anchor=%22middle%22 font-size=%2224%22>🍱 Bento</text></svg>'">
+                <div class="cuisine-overlay"><h4>Bento</h4><span>弁当</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arts & Crafts -->
+    <section class="section" id="arts">
+        <div class="section-header">
+            <h2 data-i18n="arts-title">Arts & Crafts</h2>
+            <p class="jp-subtitle">芸術と工芸 · Geijutsu to Kōgei</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="cards-grid">
+            <div class="card" data-tilt>
+                <span class="card-icon">🖌️</span>
+                <h3>Shodō</h3>
+                <p>The way of writing. Japanese calligraphy transforms kanji characters into expressive art using brush, ink, and washi paper.</p>
+                <span class="jp-label">書道</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">📄</span>
+                <h3>Origami</h3>
+                <p>The ancient art of paper folding creates intricate sculptures from a single sheet. The crane is the most iconic symbol of peace.</p>
+                <span class="jp-label">折り紙</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">💐</span>
+                <h3>Ikebana</h3>
+                <p>Japanese flower arrangement emphasizing balance, harmony, and form. More than decoration—a disciplined art form and meditation.</p>
+                <span class="jp-label">生け花</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🎨</span>
+                <h3>Manga & Anime</h3>
+                <p>Japan's globally beloved visual storytelling mediums. From Astro Boy to Studio Ghibli, anime and manga define modern pop culture.</p>
+                <span class="jp-label">漫画・アニメ</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🏺</span>
+                <h3>Kintsugi</h3>
+                <p>Repairing broken pottery with gold-dusted lacquer. A philosophy treating damage as part of an object's history, not something to hide.</p>
+                <span class="jp-label">金継ぎ</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">👘</span>
+                <h3>Kimono</h3>
+                <p>The traditional garment is a canvas of artistic expression. Patterns, colors, and layers convey season, status, and personal taste.</p>
+                <span class="jp-label">着物</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Language & Etiquette -->
+    <section class="section" id="language">
+        <div class="section-header">
+            <h2 data-i18n="language-title">Language & Etiquette</h2>
+            <p class="jp-subtitle">言語と礼儀 · Gengo to Reigi</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="cards-grid">
+            <div class="card">
+                <span class="card-icon">🙇</span>
+                <h3>Arigatō gozaimasu</h3>
+                <p>Thank you (polite). One of the most essential phrases showing gratitude and respect in daily interactions.</p>
+                <span class="jp-label">ありがとうございます</span>
+                <button class="btn btn-outline" style="margin-top:1rem;padding:0.4rem 1rem;font-size:0.85rem;" onclick="playAudio('arigatou')">🔊 Listen</button>
+            </div>
+            <div class="card">
+                <span class="card-icon">🎌</span>
+                <h3>Sumimasen</h3>
+                <p>A versatile phrase meaning "excuse me," "I'm sorry," or "thank you for your trouble." Essential for polite navigation.</p>
+                <span class="jp-label">すみません</span>
+                <button class="btn btn-outline" style="margin-top:1rem;padding:0.4rem 1rem;font-size:0.85rem;" onclick="playAudio('sumimasen')">🔊 Listen</button>
+            </div>
+            <div class="card">
+                <span class="card-icon">🍽️</span>
+                <h3>Itadakimasu</h3>
+                <p>Said before meals to express gratitude for the food and everyone involved in bringing it to the table.</p>
+                <span class="jp-label">いただきます</span>
+                <button class="btn btn-outline" style="margin-top:1rem;padding:0.4rem 1rem;font-size:0.85rem;" onclick="playAudio('itadakimasu')">🔊 Listen</button>
+            </div>
+            <div class="card">
+                <span class="card-icon">👋</span>
+                <h3>Ojama shimasu</h3>
+                <p>"I'm disturbing you" — said when entering someone's home. Shows humility and awareness of being a guest.</p>
+                <span class="jp-label">お邪魔します</span>
+                <button class="btn btn-outline" style="margin-top:1rem;padding:0.4rem 1rem;font-size:0.85rem;" onclick="playAudio('ojama')">🔊 Listen</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Japan -->
+    <section class="section" id="modern">
+        <div class="section-header">
+            <h2 data-i18n="modern-title">Modern Japan</h2>
+            <p class="jp-subtitle">現代日本 · Gendai Nihon</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="cards-grid">
+            <div class="card" data-tilt>
+                <span class="card-icon">🤖</span>
+                <h3>Technology</h3>
+                <p>World leaders in robotics, bullet trains, and innovation. Japan blends cutting-edge tech seamlessly with tradition.</p>
+                <span class="jp-label">技術 · Gijutsu</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">👗</span>
+                <h3>Harajuku Fashion</h3>
+                <p>Tokyo's youth fashion capital showcases bold street styles—from Lolita to Decora, a global fashion phenomenon.</p>
+                <span class="jp-label">原宿ファッション</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🎮</span>
+                <h3>Gaming Culture</h3>
+                <p>Home of Nintendo, Sony PlayStation, and countless arcades. Gaming is deeply woven into modern Japanese life.</p>
+                <span class="jp-label">ゲーム文化</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel & Experiences -->
+    <section class="section" id="travel">
+        <div class="section-header">
+            <h2 data-i18n="travel-title">Travel & Experiences</h2>
+            <p class="jp-subtitle">旅と体験 · Tabi to Taiken</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="cards-grid">
+            <div class="card" data-tilt>
+                <span class="card-icon">🗻</span>
+                <h3>Mount Fuji</h3>
+                <p>Japan's iconic sacred mountain. Hike the Yoshida Trail or admire it from the Fuji Five Lakes region.</p>
+                <span class="jp-label">富士山</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">⛩️</span>
+                <h3>Kyoto Temples</h3>
+                <p>Over 2,000 temples and shrines. Fushimi Inari's vermilion torii gates and Kinkaku-ji's golden pavilion are breathtaking.</p>
+                <span class="jp-label">京都の寺院</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🌊</span>
+                <h3>Okinawa Beaches</h3>
+                <p>Tropical paradise with crystal-clear waters, coral reefs, and unique Ryukyuan culture distinct from mainland Japan.</p>
+                <span class="jp-label">沖縄</span>
+            </div>
+            <div class="card" data-tilt>
+                <span class="card-icon">🏙️</span>
+                <h3>Shibuya Crossing</h3>
+                <p>The world's busiest pedestrian crossing. Experience Tokyo's electric energy as thousands cross in perfect harmony.</p>
+                <span class="jp-label">渋谷スクランブル</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section" id="gallery">
+        <div class="section-header">
+            <h2 data-i18n="gallery-title">Gallery</h2>
+            <p class="jp-subtitle">ギャラリー</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="masonry-grid" id="masonryGrid">
+            <div class="masonry-item"><img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&auto=format" alt="Japan scenery" loading="lazy" onerror="this.style.background='var(--bg-tertiary)'"></div>
+            <div class="masonry-item"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&auto=format" alt="Temple" loading="lazy" onerror="this.style.background='var(--bg-tertiary)'"></div>
+            <div class="masonry-item"><img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&auto=format" alt="Torii gate" loading="lazy" onerror="this.style.background='var(--bg-tertiary)'"></div>
+            <div class="masonry-item"><img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=600&auto=format" alt="Cherry blossoms" loading="lazy" onerror="this.style.background='var(--bg-tertiary)'"></div>
+            <div class="masonry-item"><img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=600&auto=format" alt="Tokyo" loading="lazy" onerror="this.style.background='var(--bg-tertiary)'"></div>
+            <div class="masonry-item"><img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=600&auto=format" alt="Mount Fuji" loading="lazy" onerror="this.style.background='var(--bg-tertiary)'"></div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="section" id="quiz-section">
+        <div class="section-header">
+            <h2 data-i18n="quiz-title">How Japanese Are You?</h2>
+            <p class="jp-subtitle">あなたはどのくらい日本人？</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="quiz-container" id="quizContainer">
+            <div class="quiz-question" id="quizQuestion"></div>
+            <div class="quiz-options" id="quizOptions"></div>
+            <div class="quiz-result" id="quizResult"></div>
+            <button class="btn btn-primary" id="quizNextBtn" style="display:none;">Next Question →</button>
+            <button class="btn btn-outline" id="quizRestartBtn" style="display:none;margin-top:0.5rem;">Restart Quiz 🔄</button>
+        </div>
+    </section>
+
+    <!-- Discord Community -->
+    <section class="section" id="community">
+        <div class="section-header">
+            <h2 data-i18n="community-title">Join Our Community</h2>
+            <p class="jp-subtitle">コミュニティに参加</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="discord-card">
+            <span class="discord-icon-glow">💬</span>
+            <h3>Nihon no Kokoro Discord</h3>
+            <p data-i18n="discord-desc">Connect with Japan lovers worldwide. Share experiences, learn Japanese, plan trips, and celebrate Japanese culture together!</p>
+            <div class="member-count" id="memberCount">🌍 <span id="memberNumber">12,847</span> members online</div>
+            <ul class="discord-benefits">
+                <li>Weekly cultural discussion threads</li>
+                <li>Japanese language practice channels</li>
+                <li>Travel tips & local guides</li>
+                <li>Anime & manga watch parties</li>
+                <li>Recipe sharing & cooking sessions</li>
+            </ul>
+            <a href="#" class="btn-discord" target="_blank" rel="noopener">
+                <span>💬</span> Join Discord Server
+            </a>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="Lightbox image" id="lightboxImg">
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">🌸</button>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="#hero">Home</a>
+            <a href="#culture">Culture</a>
+            <a href="#traditions">Traditions</a>
+            <a href="#cuisine">Cuisine</a>
+            <a href="#arts">Arts</a>
+            <a href="#language">Language</a>
+            <a href="#modern">Modern Japan</a>
+            <a href="#travel">Travel</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#community">Community</a>
+        </div>
+        <div class="footer-social">
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="YouTube">▶️</a>
+            <a href="#" aria-label="GitHub">🐙</a>
+            <a href="#" aria-label="Discord">💬</a>
+        </div>
+        <p class="footer-copy">© 2026 日本の心 · Nihon no Kokoro. Made with ❤️ for Japan. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // ============ GSAP & ScrollTrigger Init ============
+        gsap.registerPlugin(ScrollTrigger);
+
+        // ============ DOM Elements ============
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const progressBar = document.getElementById('progress-bar');
+        const backToTop = document.getElementById('backToTop');
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themePanel = document.getElementById('themePanel');
+        const themeOrbs = document.querySelectorAll('.theme-orb');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const searchResults = document.getElementById('searchResults');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const memberNumber = document.getElementById('memberNumber');
+        const sakuraCanvas = document.getElementById('sakura-canvas');
+        const ctx = sakuraCanvas.getContext('2d');
+
+        // ============ Sakura Petal Animation ============
+        let petals = [];
+        const maxPetals = 60;
+
+        function resizeCanvas() {
+            sakuraCanvas.width = window.innerWidth;
+            sakuraCanvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Petal {
+            constructor() {
+                this.reset(true);
+            }
+            reset(initial = false) {
+                this.x = Math.random() * sakuraCanvas.width;
+                this.y = initial ? Math.random() * sakuraCanvas.height : -20;
+                this.size = Math.random() * 10 + 5;
+                this.speedY = Math.random() * 1.5 + 0.5;
+                this.speedX = Math.random() * 0.8 - 0.4;
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotationSpeed = Math.random() * 0.03 - 0.015;
+                this.opacity = Math.random() * 0.5 + 0.4;
+                const isDark = document.documentElement.getAttribute('data-theme') === 'lavender-zen' ||
+                    document.documentElement.getAttribute('data-theme') === 'soft-sakura-pink';
+                this.color = isDark ?
+                    `rgba(255,150,180,${this.opacity})` :
+                    `rgba(255,183,197,${this.opacity})`;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.y * 0.01) * 0.4;
+                this.rotation += this.rotationSpeed;
+                if (this.y > sakuraCanvas.height + 30) {
+                    this.reset();
+                }
+            }
+            draw(ctx) {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, this.size, this.size * 0.45, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < maxPetals; i++) {
+            petals.push(new Petal());
+        }
+
+        function animatePetals() {
+            ctx.clearRect(0, 0, sakuraCanvas.width, sakuraCanvas.height);
+            petals.forEach(p => {
+                p.update();
+                p.draw(ctx);
+            });
+            requestAnimationFrame(animatePetals);
+        }
+        animatePetals();
+
+        // Update petal colors on theme change
+        function updatePetalColors() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'lavender-zen' ||
+                document.documentElement.getAttribute('data-theme') === 'soft-sakura-pink';
+            petals.forEach(p => {
+                p.color = isDark ?
+                    `rgba(255,150,180,${p.opacity})` :
+                    `rgba(255,183,197,${p.opacity})`;
+            });
+        }
+
+        // ============ Progress Bar ============
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = progress + '%';
+
+            // Back to top button
+            if (scrollTop > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            // Navbar shadow
+            if (scrollTop > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ============ Mobile Menu ============
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('show');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('show');
+            });
+        });
+
+        // Close mobile menu on outside click
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target) && navLinks.classList.contains('show')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('show');
+            }
+        });
+
+        // ============ Theme System ============
+        function setTheme(themeName) {
+            document.documentElement.setAttribute('data-theme', themeName);
+            localStorage.setItem('nihon-theme', themeName);
+            themeOrbs.forEach(orb => {
+                orb.classList.toggle('active', orb.getAttribute('data-theme') === themeName);
+            });
+            updatePetalColors();
+            updateThemeMetaColor(themeName);
+        }
+
+        function updateThemeMetaColor(themeName) {
+            const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+            const colors = {
+                'tokyo-night': '#1a1a2e',
+                'hacker-green': '#0d1a0d',
+                'magenta-bloom': '#2a1030',
+                'lavender-zen': '#f0e8ff',
+                'cherry-blossom-red': '#2a1015',
+                'deep-ocean-blue': '#0a1a30',
+                'soft-sakura-pink': '#ffe8ec'
+            };
+            if (metaThemeColor && colors[themeName]) {
+                metaThemeColor.setAttribute('content', colors[themeName]);
+            }
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('nihon-theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+
+        themeToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themePanel.classList.toggle('show');
+        });
+
+        themeOrbs.forEach(orb => {
+            orb.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const theme = orb.getAttribute('data-theme');
+                setTheme(theme);
+                themePanel.classList.remove('show');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.theme-switcher-wrap')) {
+                themePanel.classList.remove('show');
+            }
+        });
+
+        // ============ Search Functionality ============
+        const culturalTopics = [
+            { title: 'Tea Ceremony', desc: 'Chanoyu - The meditative ritual of preparing matcha green tea. A cornerstone of Japanese culture emphasizing harmony, respect, purity, and tranquility.',
+                section: '#traditions', keywords: ['tea', 'matcha', 'chanoyu', 'ceremony'] },
+            { title: 'Sushi', desc: 'Japan\'s most famous culinary export. Vinegared rice paired with fresh fish, seafood, and vegetables in endless varieties.',
+                section: '#cuisine', keywords: ['sushi', 'fish', 'rice', 'food'] },
+            { title: 'Sakura', desc: 'Cherry blossoms symbolize the transient nature of life. Hanami parties celebrate their fleeting beauty each spring.',
+                section: '#traditions', keywords: ['sakura', 'cherry', 'blossom', 'hanami', 'spring'] },
+            { title: 'Samurai', desc: 'The warrior class of feudal Japan. Bushido code emphasized loyalty, honor, and discipline. Their legacy shapes modern Japan.',
+                section: '#culture', keywords: ['samurai', 'warrior', 'bushido', 'katana'] },
+            { title: 'Anime', desc: 'Japanese animation has become a global phenomenon. Studio Ghibli, Shonen Jump, and countless series define modern entertainment.',
+                section: '#arts', keywords: ['anime', 'manga', 'ghibli', 'animation', 'cartoon'] },
+            { title: 'Mount Fuji', desc: 'Japan\'s tallest peak and sacred symbol. A UNESCO World Heritage site attracting climbers and photographers worldwide.',
+                section: '#travel', keywords: ['fuji', 'mountain', 'climb', 'volcano'] },
+            { title: 'Kimono', desc: 'Traditional Japanese garment. Worn for special occasions, ceremonies, and festivals. Each pattern tells a story.',
+                section: '#arts', keywords: ['kimono', 'clothing', 'dress', 'traditional', 'wear'] },
+            { title: 'Shinto', desc: 'Japan\'s indigenous spirituality. Kami spirits inhabit natural elements. Shrines with torii gates mark sacred spaces.',
+                section: '#culture', keywords: ['shinto', 'religion', 'kami', 'shrine', 'torii'] },
+            { title: 'Ramen', desc: 'Wheat noodles in rich broth. Regional varieties from tonkotsu to miso make it Japan\'s soul food.',
+                section: '#cuisine', keywords: ['ramen', 'noodle', 'soup', 'broth'] },
+            { title: 'Calligraphy', desc: 'Shodo - The artistic writing of Japanese characters using brush and ink. A meditative practice expressing beauty through strokes.',
+                section: '#arts', keywords: ['calligraphy', 'shodo', 'brush', 'writing', 'ink'] },
+            { title: 'Origami', desc: 'Paper folding art. From simple cranes to complex sculptures, origami embodies patience and precision.',
+                section: '#arts', keywords: ['origami', 'paper', 'fold', 'crane'] },
+            { title: 'Matsuri', desc: 'Japanese festivals featuring parades, mikoshi shrines, street food, and fireworks. Each region has unique celebrations.',
+                section: '#traditions', keywords: ['matsuri', 'festival', 'parade', 'fireworks', 'celebration'] },
+        ];
+
+        function performSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+            if (query.length < 2) {
+                searchResults.classList.remove('show');
+                searchResults.innerHTML = '';
+                return;
+            }
+            const results = culturalTopics.filter(topic =>
+                topic.keywords.some(k => k.includes(query)) ||
+                topic.title.toLowerCase().includes(query) ||
+                topic.desc.toLowerCase().includes(query)
+            );
+            if (results.length > 0) {
+                searchResults.innerHTML = results.map(r => `
+                    <div class="search-result-item" onclick="document.querySelector('${r.section}').scrollIntoView({behavior:'smooth'})">
+                        <strong>${r.title}</strong> — ${r.desc.substring(0, 80)}...
+                    </div>
+                `).join('');
+                searchResults.classList.add('show');
+            } else {
+                searchResults.innerHTML =
+                    '<div class="search-result-item" style="text-align:center;color:var(--text-secondary);">No results found. Try "tea", "sushi", "sakura", "samurai"...</div>';
+                searchResults.classList.add('show');
+            }
+        }
+
+        searchBtn.addEventListener('click', performSearch);
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
+        searchInput.addEventListener('input', () => {
+            if (searchInput.value.length >= 2) performSearch();
+            else {
+                searchResults.classList.remove('show');
+                searchResults.innerHTML = '';
+            }
+        });
+
+        // ============ Lightbox ============
+        document.querySelectorAll('.masonry-item img, .cuisine-card img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('show');
+            });
+        });
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('show');
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') lightbox.classList.remove('show');
+        });
+
+        // ============ 3D Tilt Effect ============
+        document.querySelectorAll('[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / centerY * -8;
+                const rotateY = (x - centerX) / centerX * 8;
+                card.style.transform =
+                    `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        });
+
+        // ============ Audio Playback (Simulated) ============
+        function playAudio(phrase) {
+            // Use Web Speech API for text-to-speech
+            const utterances = {
+                'arigatou': { text: 'Arigatō gozaimasu', lang: 'ja-JP' },
+                'sumimasen': { text: 'Sumimasen', lang: 'ja-JP' },
+                'itadakimasu': { text: 'Itadakimasu', lang: 'ja-JP' },
+                'ojama': { text: 'Ojama shimasu', lang: 'ja-JP' },
+            };
+            const utterance = utterances[phrase];
+            if (utterance && 'speechSynthesis' in window) {
+                const msg = new SpeechSynthesisUtterance(utterance.text);
+                msg.lang = utterance.lang;
+                msg.rate = 0.85;
+                speechSynthesis.cancel();
+                speechSynthesis.speak(msg);
+            } else {
+                // Fallback notification
+                const btn = document.activeElement;
+                if (btn) {
+                    const origText = btn.textContent;
+                    btn.textContent = '🔊 Playing...';
+                    btn.style.borderColor = 'var(--accent)';
+                    setTimeout(() => {
+                        btn.textContent = origText;
+                        btn.style.borderColor = '';
+                    }, 1500);
+                }
+            }
+        }
+
+        // ============ Quiz ============
+        const quizData = [
+            {
+                question: 'What does "Wabi-Sabi" celebrate?',
+                options: ['Perfect symmetry', 'Beauty in imperfection', 'Bright colors', 'Modern technology'],
+                correct: 1,
+            },
+            {
+                question: 'Which Japanese festival celebrates cherry blossoms?',
+                options: ['Obon', 'Tanabata', 'Hanami', 'Shōgatsu'],
+                correct: 2,
+            },
+            {
+                question: 'What is the Japanese art of paper folding called?',
+                options: ['Ikebana', 'Shodō', 'Kintsugi', 'Origami'],
+                correct: 3,
+            },
+            {
+                question: 'What does "Itadakimasu" mean?',
+                options: ['Goodbye', 'I\'m sorry', 'Thank you for the food', 'Excuse me'],
+                correct: 2,
+            },
+            {
+                question: 'Which mountain is Japan\'s tallest and most sacred?',
+                options: ['Mount Kita', 'Mount Fuji', 'Mount Hotaka', 'Mount Aso'],
+                correct: 1,
+            },
+        ];
+
+        let currentQuiz = 0;
+        let quizScore = 0;
+        let quizAnswered = false;
+
+        const quizQuestion = document.getElementById('quizQuestion');
+        const quizOptions = document.getElementById('quizOptions');
+        const quizResult = document.getElementById('quizResult');
+        const quizNextBtn = document.getElementById('quizNextBtn');
+        const quizRestartBtn = document.getElementById('quizRestartBtn');
+
+        function loadQuiz() {
+            if (currentQuiz >= quizData.length) {
+                showQuizFinalResult();
+                return;
+            }
+            quizAnswered = false;
+            quizNextBtn.style.display = 'none';
+            quizResult.textContent = '';
+            const q = quizData[currentQuiz];
+            quizQuestion.textContent = `Q${currentQuiz + 1}: ${q.question}`;
+            quizOptions.innerHTML = q.options
+                .map(
+                    (opt, i) =>
+                    `<button class="quiz-option" data-index="${i}" onclick="selectQuizAnswer(${i}, this)">${opt}</button>`
+                )
+                .join('');
+        }
+
+        function selectQuizAnswer(index, btnElement) {
+            if (quizAnswered) return;
+            quizAnswered = true;
+            const q = quizData[currentQuiz];
+            const allOptions = quizOptions.querySelectorAll('.quiz-option');
+            allOptions.forEach(opt => opt.style.pointerEvents = 'none');
+
+            if (index === q.correct) {
+                btnElement.classList.add('correct');
+                quizScore++;
+                quizResult.innerHTML = '✅ <span style="color:#4caf50;">Correct!</span>';
+            } else {
+                btnElement.classList.add('wrong');
+                allOptions[q.correct].classList.add('correct');
+                quizResult.innerHTML = '❌ <span style="color:#f44336;">Not quite!</span> The correct answer is highlighted.';
+            }
+            quizNextBtn.style.display = 'inline-block';
+        }
+
+        function showQuizFinalResult() {
+            quizQuestion.textContent = '🎉 Quiz Complete!';
+            quizOptions.innerHTML = '';
+            quizNextBtn.style.display = 'none';
+            quizRestartBtn.style.display = 'inline-block';
+            const pct = Math.round((quizScore / quizData.length) * 100);
+            let message = '';
+            if (pct >= 80) message = '🏯 You are a true Japan expert! Sugoi!';
+            else if (pct >= 50) message = '🌸 You have a good understanding of Japanese culture!';
+            else message = '🎌 Keep learning! Japan has so much to discover.';
+            quizResult.innerHTML =
+                `<span style="font-size:2rem;">${pct}%</span><br><span style="color:var(--accent);">${message}</span><br><span style="font-size:0.9rem;color:var(--text-secondary);">Score: ${quizScore}/${quizData.length}</span>`;
+        }
+
+        quizNextBtn.addEventListener('click', () => {
+            currentQuiz++;
+            loadQuiz();
+        });
+
+        quizRestartBtn.addEventListener('click', () => {
+            currentQuiz = 0;
+            quizScore = 0;
+            quizRestartBtn.style.display = 'none';
+            loadQuiz();
+        });
+
+        loadQuiz();
+
+        // ============ Live Member Count Animation ============
+        function animateMemberCount() {
+            let count = 12847;
+            setInterval(() => {
+                const change = Math.floor(Math.random() * 7) - 2;
+                count += change;
+                if (count < 12800) count = 12830;
+                if (count > 12950) count = 12920;
+                memberNumber.textContent = count.toLocaleString();
+            }, 4000);
+        }
+        animateMemberCount();
+
+        // ============ Language Switcher ============
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const translations = {
+            en: {
+                'nav-home': 'Home',
+                'nav-culture': 'Culture',
+                'nav-traditions': 'Traditions',
+                'nav-cuisine': 'Cuisine',
+                'nav-arts': 'Arts',
+                'nav-language': 'Language',
+                'nav-modern': 'Modern Japan',
+                'nav-travel': 'Travel',
+                'nav-gallery': 'Gallery',
+                'nav-community': 'Community',
+                'hero-subtitle': 'Discover the Beauty, Tradition, and Soul of Japan',
+                'hero-explore': 'Explore Culture',
+                'hero-quiz': 'Take the Quiz 🧠',
+                'search-placeholder': '🔍 Search cultural topics...',
+                'culture-title': 'Cultural Essence',
+                'culture-wabisabi': 'Wabi-Sabi',
+                'culture-wabisabi-desc': 'The art of finding beauty in imperfection and transience.',
+                'culture-omotenashi': 'Omotenashi',
+                'culture-omotenashi-desc': 'Japanese hospitality rooted in selfless service.',
+                'culture-monoaware': 'Mono no Aware',
+                'culture-monoaware-desc': 'The bittersweet awareness of impermanence.',
+                'culture-shinto': 'Shinto & Buddhism',
+                'culture-shinto-desc': 'Two major spiritual traditions coexisting harmoniously.',
+                'culture-respect': 'Respect & Harmony',
+                'culture-respect-desc': 'Wa (harmony) is central to Japanese society.',
+                'culture-nature': 'Nature Reverence',
+                'culture-nature-desc': 'Deep connection with nature through seasonal celebrations.',
+                'traditions-title': 'Traditions & Festivals',
+                'cuisine-title': 'Japanese Cuisine',
+                'arts-title': 'Arts & Crafts',
+                'language-title': 'Language & Etiquette',
+                'modern-title': 'Modern Japan',
+                'travel-title': 'Travel & Experiences',
+                'gallery-title': 'Gallery',
+                'quiz-title': 'How Japanese Are You?',
+                'community-title': 'Join Our Community',
+                'discord-desc': 'Connect with Japan lovers worldwide!',
+            },
+            romaji: {
+                'nav-home': 'Hōmu',
+                'nav-culture': 'Bunka',
+                'nav-traditions': 'Dentō',
+                'nav-cuisine': 'Washoku',
+                'nav-arts': 'Geijutsu',
+                'nav-language': 'Gengo',
+                'nav-modern': 'Gendai Nihon',
+                'nav-travel': 'Tabi',
+                'nav-gallery': 'Gyararī',
+                'nav-community': 'Komyuniti',
+                'hero-subtitle': 'Nihon no utsukushisa, dentō, soshite tamashī o hakken shiyou',
+                'hero-explore': 'Bunka o sagasu',
+                'hero-quiz': 'Kuizu 🧠',
+                'search-placeholder': '🔍 Bunka topikku o kensaku...',
+                'culture-title': 'Bunka no Shinzui',
+                'culture-wabisabi': 'Wabi-Sabi',
+                'culture-wabisabi-desc': 'Fukanzen to hakanasa no naka ni utsukushisa o mitsukeru.',
+                'culture-omotenashi': 'Omotenashi',
+                'culture-omotenashi-desc': 'Mushō no sābisu ni nezashita Nihon no omotenashi.',
+                'culture-monoaware': 'Mono no Aware',
+                'culture-monoaware-desc': 'Hakanasa e no setsunai ishiki.',
+                'culture-shinto': 'Shintō to Bukkyō',
+                'culture-shinto-desc': 'Futatsu no seishin dentō ga chōwa shite sonzai.',
+                'culture-respect': 'Sonkei to Wa',
+                'culture-respect-desc': 'Wa wa Nihon shakai no chūshin desu.',
+                'culture-nature': 'Shizen Sūhai',
+                'culture-nature-desc': 'Kisetsu no oiwai o tsūjita shizen to no fukai kizuna.',
+                'traditions-title': 'Dentō to Matsuri',
+                'cuisine-title': 'Washoku',
+                'arts-title': 'Geijutsu to Kōgei',
+                'language-title': 'Gengo to Reigi',
+                'modern-title': 'Gendai Nihon',
+                'travel-title': 'Tabi to Taiken',
+                'gallery-title': 'Gyararī',
+                'quiz-title': 'Anata wa dono kurai Nihonjin?',
+                'community-title': 'Komyuniti ni Sanka',
+                'discord-desc': 'Sekaijū no Nihon ai kōsha to tsunagarou!',
+            },
+            jp: {
+                'nav-home': 'ホーム',
+                'nav-culture': '文化',
+                'nav-traditions': '伝統',
+                'nav-cuisine': '和食',
+                'nav-arts': '芸術',
+                'nav-language': '言語',
+                'nav-modern': '現代日本',
+                'nav-travel': '旅',
+                'nav-gallery': 'ギャラリー',
+                'nav-community': 'コミュニティ',
+                'hero-subtitle': '日本の美しさ、伝統、魂を発見しよう',
+                'hero-explore': '文化を探る',
+                'hero-quiz': 'クイズに挑戦 🧠',
+                'search-placeholder': '🔍 文化トピックを検索...',
+                'culture-title': '文化の真髄',
+                'culture-wabisabi': '侘び寂び',
+                'culture-wabisabi-desc': '不完全さと儚さの中に美を見出す芸術。',
+                'culture-omotenashi': 'おもてなし',
+                'culture-omotenashi-desc': '無私の奉仕に根ざした日本の hospitality。',
+                'culture-monoaware': '物の哀れ',
+                'culture-monoaware-desc': '儚さへの切ない意識。',
+                'culture-shinto': '神道と仏教',
+                'culture-shinto-desc': '調和して共存する二大精神的伝統。',
+                'culture-respect': '尊敬と和',
+                'culture-respect-desc': '和は日本社会の中心です。',
+                'culture-nature': '自然崇拝',
+                'culture-nature-desc': '季節の祝いを通じた自然との深いつながり。',
+                'traditions-title': '伝統と祭り',
+                'cuisine-title': '和食',
+                'arts-title': '芸術と工芸',
+                'language-title': '言語と礼儀',
+                'modern-title': '現代日本',
+                'travel-title': '旅と体験',
+                'gallery-title': 'ギャラリー',
+                'quiz-title': 'あなたはどのくらい日本人？',
+                'community-title': 'コミュニティに参加',
+                'discord-desc': '世界中の日本愛好家とつながろう！',
+            },
+        };
+
+        function applyTranslation(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    if (el.tagName === 'INPUT' && el.getAttribute('placeholder') !== null) {
+                        el.placeholder = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
+            // Special handling for search placeholder
+            if (translations[lang]['search-placeholder']) {
+                searchInput.placeholder = translations[lang]['search-placeholder'];
+            }
+        }
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                langButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const lang = btn.getAttribute('data-lang');
+                localStorage.setItem('nihon-lang', lang);
+                applyTranslation(lang);
+            });
+        });
+
+        // Load saved language
+        const savedLang = localStorage.getItem('nihon-lang');
+        if (savedLang && translations[savedLang]) {
+            langButtons.forEach(b => b.classList.remove('active'));
+            const activeBtn = document.querySelector(`[data-lang="${savedLang}"]`);
+            if (activeBtn) activeBtn.classList.add('active');
+            applyTranslation(savedLang);
+        }
+
+        // ============ Scroll Reveal Animations ============
+        const revealElements = document.querySelectorAll('.card, .cuisine-card, .masonry-item, .discord-card, .quiz-container');
+        const revealObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        gsap.fromTo(entry.target, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7,
+                            ease: 'power3.out' });
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+        );
+
+        revealElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(40px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            revealObserver.observe(el);
+        });
+
+        // ============ Parallax on Hero ============
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const hero = document.getElementById('hero');
+            if (hero && scrollY < window.innerHeight) {
+                const floatingEls = hero.querySelectorAll('.floating-3d');
+                floatingEls.forEach((el, i) => {
+                    const speed = 0.3 + i * 0.08;
+                    el.style.transform = `translateY(${scrollY * speed}px)`;
+                });
+            }
+        });
+
+        // ============ Active Nav Link on Scroll ============
+        const allSections = document.querySelectorAll('section[id]');
+        const allNavAnchors = document.querySelectorAll('.nav-links a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            allSections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            allNavAnchors.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) {
+                    a.classList.add('active');
+                }
+            });
+        });
+
+        // ============ GSAP Hero Animation ============
+        gsap.fromTo('.hero-content h1', { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out',
+            delay: 0.3 });
+        gsap.fromTo('.hero-subtitle', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+            delay: 0.6 });
+        gsap.fromTo('.hero-cta', { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.9 });
+
+        // ============ Initialize ============
+        console.log('🌸 日本の心 - Nihon no Kokoro');
+        console.log('✨ All systems ready. Enjoy exploring Japanese culture!');
+        console.log('🎨 Active theme:', savedTheme || 'tokyo-night');
+        console.log('🌐 Language:', savedLang || 'en');
+    </script>
+</body>
+</html>
