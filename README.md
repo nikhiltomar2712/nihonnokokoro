@@ -16,13 +16,12 @@
 
 ---
 
-## 🎑 Live Demo & Screenshots
+## 🎑  Screenshots
 
-> **Live Demo:** [https://your-demo-link.com](https://your-demo-link.com) *(placeholder)*
 
 | Tokyo Night 🌙 | Sakura Pink 🌸 | Lavender Zen 🎋 |
 |:---:|:---:|:---:|
-| ![Tokyo Night](screenshots/tokyo-night.png) | ![Sakura Pink](screenshots/sakura-pink.png) | ![Lavender Zen](screenshots/lavender-zen.png) |
+| ![Tokyo Night](https://cdn.corenexis.com/files/c/2189751720.png) | ![Sakura Pink](https://cdn.corenexis.com/files/c/8577587720.png) | ![Lavender Zen](https://cdn.corenexis.com/files/c/6995164720.png) |
 
 <details>
 <summary>📸 More screenshots</summary>
