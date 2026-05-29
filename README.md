@@ -2,22 +2,9 @@
 # 日本の心 — Nihon no Kokoro 🌸
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge" alt="Version">
-  <img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="License MIT">
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge" alt="PRs Welcome">
-  <img src="https://img.shields.io/badge/made_with-%E2%9D%A4%EF%B8%8F_for_Japan-red?style=for-the-badge" alt="Made with love for Japan">
-</p>
-
-<p align="center">
   <strong>A modern, immersive single‑page website celebrating Japanese culture, tradition, art, food, and modern life.</strong><br>
   Built with pure HTML, CSS, JavaScript, GSAP, and seven beautiful themes.
 </p>
-
----
-
-## 🎑 Live Demo
-
-> **Live Demo:** [https://your-demo-link.com](https://your-demo-link.com) *(placeholder – deploy to GitHub Pages, Netlify, or Vercel)*
 
 ---
 
