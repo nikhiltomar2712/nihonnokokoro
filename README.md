@@ -1,5 +1,6 @@
+Here’s a clean **README.md** with all image links removed—perfect for immediate use without placeholder screenshots.
+
 ```markdown
-<!-- README.md -->
 # 日本の心 — Nihon no Kokoro 🌸
 
 <p align="center">
@@ -16,29 +17,9 @@
 
 ---
 
-## 🎑  Screenshots
+## 🎑 Live Demo
 
-
-| Tokyo Night 🌙 | Sakura Pink 🌸 | Lavender Zen 🎋 |
-|:---:|:---:|:---:|
-| ![Tokyo Night](https://cdn.corenexis.com/files/c/2189751720.png) | ![Sakura Pink](https://cdn.corenexis.com/files/c/8577587720.png) | ![Lavender Zen](https://cdn.corenexis.com/files/c/6995164720.png) |
-
-<details>
-<summary>📸 More screenshots</summary>
-<br>
-<p align="center">
-  <b>Hacker Green 🟢</b><br>
-  <img src="screenshots/hacker-green.png" width="600" alt="Hacker Green theme">
-</p>
-<p align="center">
-  <b>Cherry Blossom Red 🔴</b><br>
-  <img src="screenshots/cherry-red.png" width="600" alt="Cherry Blossom Red theme">
-</p>
-<p align="center">
-  <b>Deep Ocean Blue 🌊</b><br>
-  <img src="screenshots/ocean-blue.png" width="600" alt="Deep Ocean Blue theme">
-</p>
-</details>
+> **Live Demo:** [https://your-demo-link.com](https://your-demo-link.com) *(placeholder – deploy to GitHub Pages, Netlify, or Vercel)*
 
 ---
 
@@ -171,4 +152,4 @@ See the [LICENSE](LICENSE) file for details.
 </p>
 ```
 
-Save this as `README.md` in your project root. It includes all requested sections, badges, placeholder for screenshots and live demo, detailed features, tech stack, installation guide, theming instructions, contributing guidelines, and license info.
+This README is ready to push to GitHub immediately. You can add your own screenshots later by simply inserting `![description](path)` inside a dedicated section if needed.
