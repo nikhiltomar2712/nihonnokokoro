@@ -1,6 +1,7 @@
 ```markdown
 # 日本の心 — Nihon no Kokoro 🌸
 
+
 <p align="center">
   <strong>A modern, immersive single‑page website celebrating Japanese culture, tradition, art, food, and modern life.</strong><br>
   Built with pure HTML, CSS, JavaScript, GSAP, and seven beautiful themes.
